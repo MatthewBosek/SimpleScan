@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "classArray": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "linkArray": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "lastUpdated": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "link",
+                    "status",
+                    "lastUpdated"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "lastUpdated": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "link",
+                    "status",
+                    "lastUpdated"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "linkArray"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "linkArray": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "lastUpdated": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "link",
+                    "status",
+                    "lastUpdated"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "linkArray"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "classArray"
+  ]
+}

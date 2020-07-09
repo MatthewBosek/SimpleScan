@@ -1,0 +1,28 @@
+{
+  "classList": [
+    {
+    "className": "Class1",
+    "links": [
+      {
+        "stringLink": "www.google.com",
+        "status": "unknown",
+        "lastUpdated": "12/02/2020"
+      },
+      {
+      	"stringLink": "www.facebook.com",
+      	"status": "404",
+      	"lastUpdated": "11/02/2020"
+      }
+      ]
+    },
+    {"className": "Class2",
+    "links": [
+      {
+        "stringLink": "www.googleTwo.com",
+        "status": "unknown2",
+        "lastUpdated": "12/02/2022"
+      }
+     ]
+    }
+  ]
+ }

@@ -1,0 +1,4 @@
+C:\Users\matt2\source\repos\LinkLookout\ScanUtils\obj\Debug\ScanUtils.Properties.Resources.resources
+C:\Users\matt2\source\repos\LinkLookout\ScanUtils\obj\Debug\ScanUtils.csproj.GenerateResource.cache
+C:\Users\matt2\source\repos\LinkLookout\ScanUtils\obj\Debug\ScanUtils.csproj.CoreCompileInputs.cache
+C:\Users\matt2\source\repos\LinkLookout\ScanUtils\obj\Debug\ScanUtils.csprojAssemblyReference.cache
