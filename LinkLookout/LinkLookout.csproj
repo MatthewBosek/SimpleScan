@@ -110,10 +110,6 @@
       <Project>{f88a0702-d71a-4c70-b111-9c59aff2b89f}</Project>
       <Name>UtilScan</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebLinkScanner\WebLinkScanner.csproj">
-      <Project>{0c44398c-b736-4e38-99c0-1d64a37c13ca}</Project>
-      <Name>WebLinkScanner</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Packaging.Tools.1.0.0-preview1-25301-01\build\Microsoft.Packaging.Tools.targets" Condition="Exists('..\packages\Microsoft.Packaging.Tools.1.0.0-preview1-25301-01\build\Microsoft.Packaging.Tools.targets')" />
