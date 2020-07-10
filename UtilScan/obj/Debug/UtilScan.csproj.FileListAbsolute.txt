@@ -48,3 +48,4 @@ C:\Users\matt2\Source\Repos\SimpleScan\UtilScan\obj\Debug\UtilScan.csproj.CoreCo
 C:\Users\matt2\Source\Repos\SimpleScan\UtilScan\obj\Debug\UtilScan.csproj.CopyComplete
 C:\Users\matt2\Source\Repos\SimpleScan\UtilScan\obj\Debug\UtilScan.dll
 C:\Users\matt2\Source\Repos\SimpleScan\UtilScan\obj\Debug\UtilScan.pdb
+C:\Users\matt2\Source\Repos\SimpleScan\UtilScan\obj\Debug\UtilScan.csprojAssemblyReference.cache
