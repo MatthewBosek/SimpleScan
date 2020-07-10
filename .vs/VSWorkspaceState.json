@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LinkLookout",
-    "\\LinkLookout\\bin",
-    "\\LinkLookout\\bin\\Debug"
+    "\\LinkLookout"
   ],
-  "SelectedNode": "\\LinkLookout\\bin\\Debug\\LinkLookout.exe.config",
+  "SelectedNode": "\\LinkLookout.sln",
   "PreviewInSolutionExplorer": false
 }

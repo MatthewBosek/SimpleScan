@@ -110,12 +110,18 @@ namespace UtilScan
         public static string serializeJSON()
         {
             string output = "{\"classList\": \n";
-            output += JsonConvert.SerializeObject(ShowClass.AllClasses);
-            output += "}";
-            Console.WriteLine(output);
-            Console.WriteLine("snap: " + ShowClass.AllClasses.Last().links);
-            Console.WriteLine("Snapboogaloo: " + ShowClass.AllClasses.First().links);
-            File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", output);
+            try
+            {
+                output += JsonConvert.SerializeObject(ShowClass.AllClasses);
+                output += "}";
+                Console.WriteLine(output);
+                //Console.WriteLine("snap: " + ShowClass.AllClasses.Last().links);
+                //Console.WriteLine("Snapboogaloo: " + ShowClass.AllClasses.First().links);
+                File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "classLinkStorage.json", output);
+            } catch
+            {
+
+            }
             return output;
         }
     }

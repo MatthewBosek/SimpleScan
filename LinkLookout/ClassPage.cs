@@ -59,6 +59,7 @@ namespace LinkLookout
                 DialogResult result = MessageBox.Show("Do you really want to exit?", "Dialog Title", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    Dispose(true);
                     Environment.Exit(0);
                 }
                 else
@@ -267,14 +268,14 @@ namespace LinkLookout
                 WebLinks addedLink = new WebLinks(textBoxLink.Text);
                 if (ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links == null)
                 {
-                    ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links = new List<WebLinks>();
+                    /*ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links = new List<WebLinks>();
                     string outputtty= "{\"classList\": \n";
                     outputtty += JsonConvert.SerializeObject(ShowClass.AllClasses);
-                    outputtty += "}";
+                    outputtty += "}";*/
                     ls.ResetBindings(false);
                     ls.ResetBindings(false);
-                    File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", outputtty);
-
+                    //File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", outputtty);
+                    scanLink.serializeJSON();
                 }
                 ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links.Add(addedLink);
                 // this.bs.ResetBindings(false);
