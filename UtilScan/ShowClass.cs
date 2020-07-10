@@ -14,7 +14,7 @@ namespace UtilScan
     {
         static ShowClass()
         {
-            JObject o1 = JObject.Parse(File.ReadAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json"));
+            JObject o1 = JObject.Parse(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "classLinkStorage.json"));
             ClassList classCollection = JsonConvert.DeserializeObject<ClassList>(o1.ToString());
             //give json objects parsed to static collection
             AllClasses = classCollection.classList;
