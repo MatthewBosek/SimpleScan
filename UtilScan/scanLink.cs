@@ -20,9 +20,7 @@ namespace UtilScan
                 List<Classes> cl = new List<Classes>();
                 for (int i = 0; i < ShowClass.AllClasses.Count; i++)
                 {
-                    Classes badLecture = new Classes(ShowClass.AllClasses.ElementAt(i).className);
-                    badLecture.links = new List<WebLinks>();
-                    cl.Add(badLecture);
+                    
                     for (int j = 0; j < ShowClass.AllClasses.ElementAt(i).links.Count; j++)
                     {
                         int statusCode = await pinger(ShowClass.AllClasses.ElementAt(i).links.ElementAt(j).stringLink);
@@ -34,6 +32,9 @@ namespace UtilScan
                             Int32.Parse(ShowClass.AllClasses.ElementAt(i).links.ElementAt(j).status) / 100 == 5 ||
                             Int32.Parse(ShowClass.AllClasses.ElementAt(i).links.ElementAt(j).status) == 0)
                         {
+                            Classes badLecture = new Classes(ShowClass.AllClasses.ElementAt(i).className);
+                            badLecture.links = new List<WebLinks>();
+                            cl.Add(badLecture);
                             WebLinks badLink = new WebLinks(ShowClass.AllClasses.ElementAt(i).links.ElementAt(j).stringLink);
                             badLink.status = statusCode + "";
                             badLink.lastUpdated = DateTime.Now;
