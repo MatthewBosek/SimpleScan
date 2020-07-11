@@ -50,7 +50,6 @@ namespace LinkLookout
             classBox.DisplayMember = "className";
             linkBox.DataSource = ls;
             linkBox.DisplayMember = "stringLink";
-            //Console.WriteLine("index: " + classBox.SelectedIndex);
         }
         private void ClassPage_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -72,92 +71,12 @@ namespace LinkLookout
                 e.Cancel = true;
             }
         }
-        private void deserializeJSONTest(string strJSON)
-        {
-            try
-            {
-                var jClass = JsonConvert.DeserializeObject<ClassList>(strJSON);
-                textBox1.Text = "";
-                textBox1.Text += jClass.ToString();
-                textBox1.Text += "\n\n";
-
-                foreach (var c in jClass.classList)
-                {
-                    textBox1.Text += "\n";
-                    textBox1.Text += "Class Name: \n" + c.className;
-                    Console.WriteLine("Class Name: " + c.className);
-                    textBox1.Text += "\n";
-                    foreach (var l in c.links)
-                    {
-                        textBox1.Text += "\n";
-                        textBox1.Text += "WebLink: \n" + l.stringLink;
-                        Console.WriteLine("WebLink: " + l.stringLink);
-                        textBox1.Text += "\n";
-                        textBox1.Text += "Status: \n" + l.status;
-                        Console.WriteLine("Status: " + l.status);
-                        textBox1.Text += "\n";
-                        textBox1.Text += "lastUpdated: \n" + l.lastUpdated;
-                        Console.WriteLine("lastUpdated: " + l.lastUpdated);
-                        textBox1.Text += "\n";
-                    }
-                    textBox1.Text += "\n";
-                }
-            }
-            catch (System.Exception ex)
-            {
-                Debug.WriteLine("Problem: " + ex.Message.ToString());
-            }
-        }
-
-        private void deserializeJSONT(string strJSON)
-        {
-            try
-            {
-                var jClass = JsonConvert.DeserializeObject<ClassList>(strJSON);
-
-                foreach (var c in jClass.classList)
-                {
-                    foreach (var l in c.links)
-                    {
-
-                    }
-                }
-            }
-            catch (System.Exception ex)
-            {
-                Debug.WriteLine("Problem: " + ex.Message.ToString());
-            }
-        }
-        /*  private void readJson()
-          {
-              /*JObject o1 = JObject.Parse(File.ReadAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\Data.json"));
-  */
-        // read JSON directly from a file
-        /*using (StreamReader file = File.OpenText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\Data.json"))
-        using (JsonTextReader reader = new JsonTextReader(file))
-        {
-            JObject jSchema = (JObject)JToken.ReadFrom(reader);
-        }
-
-        Classes c1 = JsonConvert.DeserializeObject<Classes>(File.ReadAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\Data.json"));
-        using (StreamReader file = File.OpenText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\Data.json"))
-        {
-            JsonSerializer serial = new JsonSerializer();
-            Classes c2 = (Classes)serial.Deserialize(file, typeof(Classes));
-        }
-
-        string a = c1.ToString();
-        textBox1.Text = a;
-    }*/
-
         private void button2_Click(object sender, EventArgs e)
         { 
-            //JObject o1 = JObject.Parse(File.ReadAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\sampleTest.json"));
-
-            //deserializeJSONTest(o1.ToString());
             scanLink.webScanner();
-            String output = scanLink.serializeJSON();
-           textBox1.Text = output;
+            //Debug code
+            //String output = scanLink.serializeJSON();
+            //textBox1.Text = output;
         } 
         private void addClassButton_Click(object sender, EventArgs e)
         {
@@ -167,15 +86,6 @@ namespace LinkLookout
                 Classes addedClass = new Classes(textBoxClass.Text);
                 addedClass.links = new List<WebLinks>();
                 ShowClass.AllClasses.Add(addedClass);
-                // this.bs.ResetBindings(false);
-                /*string output = "{\"classList\": \n";
-                output += JsonConvert.SerializeObject(ShowClass.AllClasses);
-                output += "}";
-                Console.WriteLine(output);
-                Console.WriteLine("snap: " + ShowClass.AllClasses.Last().links);
-                Console.WriteLine("Snapboogaloo: " + ShowClass.AllClasses.First().links);
-                File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", output);
-                */
                 scanLink.serializeJSON();
                 bs.ResetBindings(false);
                 if (ls.DataSource == null)
@@ -202,14 +112,8 @@ namespace LinkLookout
             {
                 int indexDel = classBox.SelectedIndex;
                 ShowClass.AllClasses.RemoveAt(indexDel);
-                /*string output = "{\"classList\": \n";
-                output += JsonConvert.SerializeObject(ShowClass.AllClasses);
-                output += "}";
-                Console.WriteLine(output);
-                File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", output);*/
                 scanLink.serializeJSON();
                 bs.ResetBindings(false);
-                //ls.ResetBindings(false);
             }   
         }
 
@@ -218,13 +122,7 @@ namespace LinkLookout
             DialogResult result = MessageBox.Show("Do you really want to delete this link?", "Dialog Title", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                //int indexDel = classBox.SelectedIndex;
                 ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links.RemoveAt(linkBox.SelectedIndex);
-                /*string output = "{\"classList\": \n";
-                output += JsonConvert.SerializeObject(ShowClass.AllClasses);
-                output += "}";
-                Console.WriteLine(output);
-                File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", output);*/
                 scanLink.serializeJSON();
                 bs.ResetBindings(false);
                 ls.ResetBindings(false);
@@ -263,38 +161,32 @@ namespace LinkLookout
         private void addLinkButton_Click(object sender, EventArgs e)
         {
             string text = textBoxLink.Text.Trim();
-            if (text != "")
+            if (ShowClass.AllClasses.Count > 0)
             {
-                WebLinks addedLink = new WebLinks(textBoxLink.Text);
-                if (ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links == null)
+                if (text != "")
                 {
-                    /*ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links = new List<WebLinks>();
-                    string outputtty= "{\"classList\": \n";
-                    outputtty += JsonConvert.SerializeObject(ShowClass.AllClasses);
-                    outputtty += "}";*/
-                    ls.ResetBindings(false);
-                    ls.ResetBindings(false);
-                    //File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", outputtty);
+                    WebLinks addedLink = new WebLinks(textBoxLink.Text);
+                    if (ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links == null)
+                    {
+                        ls.ResetBindings(false);
+                        ls.ResetBindings(false);
+                        scanLink.serializeJSON();
+                    }
+                    ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links.Add(addedLink);
                     scanLink.serializeJSON();
+                    bs.ResetBindings(false);
+                    ls.ResetBindings(false);
                 }
-                ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links.Add(addedLink);
-                // this.bs.ResetBindings(false);
-                /* string output = "{\"classList\": \n";
-                 output += JsonConvert.SerializeObject(ShowClass.AllClasses);
-                 output += "}";
-                 Console.WriteLine(output);
-                 Console.WriteLine("snap: " + ShowClass.AllClasses.ElementAt(classBox.SelectedIndex).links);
-                 //Console.WriteLine("Snapboogaloo: " + ShowClass.AllClasses.First().links);
-                 File.WriteAllText(@"C:\Users\matt2\source\repos\LinkLookout\LinkLookout\bin\outputTest.json", output);*/
-                scanLink.serializeJSON();
-                bs.ResetBindings(false);
-                ls.ResetBindings(false);
-            }
-            else
+                else
+                {
+                    DialogResult result = MessageBox.Show("Please Enter a website link", "Dialog Title", MessageBoxButtons.OK);
+                }
+                textBoxLink.Text = "";
+            } else
             {
-                DialogResult result = MessageBox.Show("Please Enter a website link", "Dialog Title", MessageBoxButtons.OK);
+                DialogResult result = MessageBox.Show("Please add a class or lecture", "Dialog Title", MessageBoxButtons.OK);
             }
-            textBoxLink.Text = "";
+
         }
     }
 }

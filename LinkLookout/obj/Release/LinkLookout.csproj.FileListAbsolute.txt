@@ -6,7 +6,6 @@ C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\bin\Release\UtilScan.dll
 C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\bin\Release\UtilScan.pdb
 C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\bin\Release\UtilScan.dll.config
 C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\bin\Release\Newtonsoft.Json.xml
-C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\obj\Release\LinkLookout.csprojAssemblyReference.cache
 C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\obj\Release\LinkLookout.ClassPage.resources
 C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\obj\Release\LinkLookout.Properties.Resources.resources
 C:\Users\matt2\Source\Repos\SimpleScan\LinkLookout\obj\Release\LinkLookout.Welcome.resources
